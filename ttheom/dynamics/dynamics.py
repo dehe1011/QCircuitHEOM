@@ -28,7 +28,9 @@ def calcDynamics(dtFB: float, stride: int,
     dataSize = int(totalStep / stride)
     mod = int(totalStep % stride)
 
+    t0 = time()
     for i in tqdm(range(dataSize)):
+    # for i in tqdm(range(5)):
         for j in range(stride):
             stepNum = i * stride + j
             t = dtFB * stepNum
@@ -44,6 +46,16 @@ def calcDynamics(dtFB: float, stride: int,
         outStr = outTime + outRho + '\n'
 
         file.write(outStr)
+        if i==0:
+            t1 = time()
+            print(f'Data size: {dataSize}')
+            print(f'Time per iteration: {(t1-t0):.2f} s')
+            print(f'Estimated time: {dataSize*(t1-t0)/60:.2f} min')
+
+    # t1 = time()
+    # print(f'Data size: {dataSize}')
+    # print(f'Time per iteration: {(t1-t0)/5:.2f} s')
+    # print(f'Estimated time: {dataSize*(t1-t0)/5/60:.2f} min')
 
     if mod > 0:
         for i in range(mod):
