@@ -6,7 +6,7 @@ Graphical User Interface (GUI)
 
 TensorHEOM provides an optional graphical user interface built with
 `CustomTkinter <https://github.com/TomSchimansky/CustomTkinter>`_.
-The GUI is designed for users who prefer an interactive, form-based workflow
+The GUI is designed for users who prefer an interactive workflow
 without writing code.
 
 Launching the GUI
@@ -60,4 +60,4 @@ reduced density matrix elements and derived quantities such as concurrence.
    :align: center
    :width: 5in
 
-   Results viewer showing the concurrence as a function of time.
+   Results viewer showing the conversion from the given quantum circuit to a pulse sequence.

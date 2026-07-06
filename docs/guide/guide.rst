@@ -4,7 +4,7 @@
 User Guide
 **********
 
-This guide explains TensorHEOM's workflow in depth.  It uses the **low-level
+This guide explains the package workflow.  It uses the **low-level
 API** (:func:`ttheom.main.main`) to show explicitly how each layer of the
 simulation — system, bath, pulse sequences, tensor-train structure, and time
 evolution — fits together.  The :ref:`Quickstart <quickstart>` page covers the
@@ -21,7 +21,7 @@ Overview
 A TensorHEOM simulation proceeds in four steps:
 
 1. **Define the quantum circuit** using Qiskit.
-2. **Specify system and bath parameters** (frequencies, temperature, T1).
+2. **Specify system, bath and simulation parameters**.
 3. **Build pulse sequences and the tensor-train structure**.
 4. **Run the time evolution** and save the reduced density matrix.
 
@@ -29,14 +29,13 @@ The diagram below shows how the package layers connect:
 
 .. code-block:: text
 
-   Qiskit circuit  ─┐
-   System params   ─┤─▶  main() / calcTimeEvo()  ─▶  CSV results
-   Bath params     ─┤       │
-   Gate specs      ─┘    TensorHEOM internals:
+   Qiskit circuit     ─┐
+   System params      ─┤─▶  main() / calcTimeEvo()  ─▶  CSV results
+   Bath params        ─┤           │
+   Simulation params  ─┘    TensorHEOM internals:
                             ├─ pulse sequence compilation
                             ├─ bath AAA decomposition
-                            ├─ TT structure construction
-                            └─ TDVP / Runge-Kutta propagation
+                            └─ TT structure construction and propagation
 
 Example 1 — Single qubit with broadband noise
 =============================================

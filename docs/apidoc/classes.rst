@@ -1,7 +1,7 @@
 Classes & Module Functions
 ==========================
 
-This section documents TensorHEOM's internal classes and module-level
+This section documents internal classes and module-level
 functions, grouped by subsystem.
 
 Pulse types and gate specifications

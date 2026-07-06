@@ -1,8 +1,7 @@
 Top-level Functions
 ===================
 
-This section documents the public functions available at the top level of the
-``ttheom`` namespace (i.e., importable directly via ``from ttheom import ...``).
+This section documents the public functions available at the top level (i.e., importable directly via ``from ttheom import ...``).
 
 High-level simulation interface
 --------------------------------
