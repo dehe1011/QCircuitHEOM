@@ -5,7 +5,7 @@
 # `import matplotlib as mpl; mpl.get_configdir()`
 # >>> 'C:\\Users\\<username>\\.matplotlib'
 # Once saved, it becomes globally accessible and can be applied using
-# `import matplotlib.pyplot as plt; plt.style.use('heom-default')`.
+# `import matplotlib.pyplot as plt; plt.style.use('ttheom-default')`.
 
 # LaTeX rendering
 # ---------------
@@ -54,7 +54,7 @@ ytick.labelsize: small  # Font size for y-tick labels
 
 # Lines and markers
 # -----------------
-lines.linewidth: 2.0  # Default line width
+lines.linewidth: 1.5  # Default line width
 lines.markersize: 8.0  # Default marker size
 
 
