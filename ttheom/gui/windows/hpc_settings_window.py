@@ -35,11 +35,11 @@ class HPCSettings(ctk.CTkToplevel):
         row = 0
         row += make_section_label(self, "Login", row)
 
-        self.hostname_entry = _add_entry(self, "Hostname:", row, default="justus2.uni-ulm.de")
+        self.hostname_entry = _add_entry(self, "Hostname:", row, default="")
         row += 1
-        self.username_entry = _add_entry(self, "Username:", row, default="ul_kfo52")
+        self.username_entry = _add_entry(self, "Username:", row, default="")
         row += 1
-        self.password_entry = _add_entry(self, "Password:", row, show="●", default="3bA5huBB5n!NdU8")
+        self.password_entry = _add_entry(self, "Password:", row, show="●", default="")
         row += 1
         self.otp_entry = _add_entry(self, "One-Time Password:", row, show="●")
         row += 1
