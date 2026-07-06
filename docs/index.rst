@@ -47,25 +47,26 @@ Minimal Example
    from ttheom import calcTimeEvo
 
    qc = QuantumCircuit(1)
-   qc.rx(1.5708, 0)   # Rx(π/2)
+   qc.h(0)
 
+   # expected runtime: 1 min
    calcTimeEvo(
-       fileName="result",
-       qc=qc,
-       numQ=1,
-       freqQ=[5.0],          # GHz
-       gateTime=[16.0],      # ns
-       T=30,                 # mK
-       T1=32,                # µs
-       omegaC=20,
-       exp=1,
-       tol=1e-4,
-       rhoIni=[[1,0],[0,0]],
-       idlingTime=1.0,       # ns
-       dtFB=3.0,             # ps
-       depth=[1],
-       bondDim=5,
-       strideTime=0.1,       # ns
+      fileName="result",
+      qc=qc,
+      numQ=1,
+      freqQ=[5.0],          # GHz
+      rhoIni=[[1,0],[0,0]],
+      gateTime=[0.16],      # ns
+      idlingTime=0.01,       # ns
+      T=30,                 # mK
+      T1=32,                # µs
+      omegaC=20,
+      exp=1/8,
+      tol=1e-6,
+      dtFB=0.1,             # ps
+      depth=[1],
+      bondDim=5,
+      strideTime=0.01,       # ns
    )
 
 See :doc:`quickstart` for a step-by-step walkthrough with explanation of all parameters.

@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="ttheom/figures/logo.png" width="250">
+    <img src="docs/figures/logo.png" width="250">
 </p>
 
 <p align="center">
@@ -34,7 +34,7 @@ TensorHEOM is a Python package for simulating quantum circuits in non-Markovian 
 The package is designed for superconducting-qubit simulations and connects circuit-level Qiskit input with microscopic open-system dynamics.
 
 <p align="center">
-    <img src="ttheom/figures/overview.png" width="800">
+    <img src="docs/figures/overview.png" width="800">
 </p>
 
 ## Installation
@@ -52,63 +52,57 @@ A typical workflow is:
 1. Define a Qiskit quantum circuit.
 2. Specify system, bath, and numerical parameters.
 3. Run the TensorHEOM simulation.
-4. Analyze the reduced density matrix, fidelity, and entanglement measures.
 
 ```python
 from qiskit import QuantumCircuit
+from ttheom import calcTimeEvo
+
+qc = QuantumCircuit(1)
+qc.h(0)
+
+# expected runtime: 1 min
+calcTimeEvo(
+   fileName="result",
+   qc=qc,
+   numQ=1,
+   freqQ=[5.0],          # GHz
+   rhoIni=[[1,0],[0,0]],
+   gateTime=[0.16],      # ns
+   idlingTime=0.01,       # ns
+   T=30,                 # mK
+   T1=32,                # µs
+   omegaC=20,
+   exp=1/8,
+   tol=1e-6,
+   dtFB=0.1,             # ps
+   depth=[1],
+   bondDim=5,
+   strideTime=0.01,       # ns
+)
+```
+
+1. Analyze the pulse sequence, reduced density matrix, and fidelity. For multiple qubits, also analyze concurrence and logarithmic negativity.
+
+```python
+import os
 from ttheom import *
 
-# Set system parameters
-system_kwargs = {
-    "numQ": 2,
-    "freqQ": [5, 5], # GHz
-    "rhoIni": [
-        [1, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-    ],
-    "gateTime": [16, 16, 50], # ns
-    "idlingTime": 1, # ns
-} 
+directory = os.getcwd()
+fileName = 'result'
 
-omegaQmax, rho = prepareSystemArgs(**system_kwargs)
+# load kwargs from QPY file 
+kwargs = getKwargs(directory, fileName)
 
-# Define input circuit
-qc = QuantumCircuit(2)
-qc.h(0)
-qc.cx(0, 1)
+# load result from CSV file
+t_list, rdo_list = getResult(directory, fileName)
 
-system_kwargs["qc"] = qc
-
-# Set bath parameters
-bath_kwargs = {    
-    "T": 30, # mK
-    "T1": 32, # us
-    "omegaC": 20,
-    "exp": 1/8,
-    "tol": 1e-4,
-}
-bathParams = prepareBathArgs(rho, omegaQmax, **bath_kwargs)
-
-# AAA decomposition
-z, d = getBathParams(bathParams[0])
-
-# Set simulation parameters
-simulation_kwargs= {
-    "dtFB": 3.0, # ps
-    "depth": [1, 1],
-    "bondDim": 5,
-    "strideTime": 0.1, # ns
-    "useRFPlus": False,
-    "isRK13": False,
-}
-
-# Run the calculation 
-kwargs = {**system_kwargs, **bath_kwargs, **simulation_kwargs}
-kwargs["directory"] = "results"
-kwargs["fileName"] = "package_test"
-calcTimeEvo(**kwargs) 
+# Post-processing
+plotQC(**kwargs)
+plotPulseSeq(**kwargs)
+plotFidelity(t_list, rdo_list, **kwargs)
+plotConcurrence(t_list, rdo_list, **kwargs)
+plotLogNeg(t_list, rdo_list, **kwargs)
+plotRDO(t_list, rdo_list, **kwargs)
 ```
 
 ## Graphical interface
@@ -122,7 +116,7 @@ TensorHeomApp().mainloop()
 ```
 
 <p align="center">
-    <img src="ttheom/figures/GUI1.png" width="800">
+    <img src="docs/figures/GUI1.png" width="800">
 </p>
 
 ## Documentation
