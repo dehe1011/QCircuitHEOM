@@ -8,17 +8,34 @@ High-level simulation interface
 
 .. currentmodule:: ttheom.main
 
+.. autofunction:: prepareTTs
 .. autofunction:: calcTimeEvo
-.. autofunction:: main
+.. autofunction:: calcTimeEvoHPC
 
 Physical-unit helpers
 ----------------------
 
-.. currentmodule:: ttheom.main
+.. currentmodule:: ttheom.utils.prepare
 
-.. autofunction:: prepareSystemArgs
-.. autofunction:: prepareBathArgs
-.. autofunction:: prepareGateArgs
+.. autofunction:: prepareParams
+.. autofunction:: prepareSystemParams
+.. autofunction:: prepareBathParams
+.. autofunction:: getKwargs
+.. autofunction:: getSystemKwargs
+.. autofunction:: getBathKwargs
+
+I/O utilities
+-------------
+
+.. currentmodule:: ttheom.utils.io_qc
+
+.. autofunction:: saveQC
+.. autofunction:: loadQC
+
+.. currentmodule:: ttheom.utils.io_csv
+
+.. autofunction:: getResult
+.. autofunction:: loadCSV
 
 Bath decomposition
 ------------------
@@ -33,8 +50,9 @@ Evaluation and analysis
 
 .. currentmodule:: ttheom.evaluation
 
-.. autofunction:: loadResult
 .. autofunction:: getFidelity
 .. autofunction:: getConcurrence
 .. autofunction:: getLogarithmicNegativity
 .. autofunction:: plotPulseSeq
+.. autofunction:: plotRDO
+.. autofunction:: plotQC
