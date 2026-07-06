@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.linalg import eigvals
+import matplotlib.pyplot as plt
 
 def getConcurrence(rho):
     """Compute the concurrence of a two-qubit density matrix.
@@ -24,3 +25,27 @@ def getConcurrence(rho):
     eigenvals = np.sort(np.sqrt(np.abs(eigvals(R))))[::-1]
     C = max(0, eigenvals[0] - sum(eigenvals[1:]))
     return C
+
+def plotConcurrence(t_list, rdo_list, fig=None, ax=None, **kwargs):
+    """Plot the concurrence of a list of two-qubit density matrices over time."""
+
+    if kwargs['numQ'] != 2:
+        print("Concurrence is only defined for two-qubit density matrices.")
+        return 
+    
+    omegaQ = 2*np.pi*np.array(kwargs['freqQ'])
+    omegaQmax = max(omegaQ)
+    t = t_list / omegaQmax
+
+    concs = [getConcurrence(rho) for rho in rdo_list]
+
+    if fig is None or ax is None:
+        fig, ax = plt.subplots()
+    ax.plot(t, concs, linewidth=1.5)
+    ax.set_xlabel("t [ns]")
+    ax.set_ylabel("C")
+    ax.set_ylim(-0.02, 1.02)
+    ax.grid(True, alpha=0.3)
+    return fig, ax
+
+

@@ -1,7 +1,8 @@
+import os
 import numpy as np
 import pandas as pd
 
-def loadResult(csvFilePath):
+def loadCSV(csvFilePath):
     """Load timesteps and density matrices from a CSV file.
 
     Parameters
@@ -33,3 +34,23 @@ def loadResult(csvFilePath):
         rhos.append(rho)
 
     return times, rhos
+
+def getResult(directory, fileName):
+    """Load simulation results from a saved CSV file.
+
+    Parameters
+    ----------
+    directory : str
+        Directory containing the CSV file.
+    fileName : str
+        Base name of the file (without extension).
+
+    Returns
+    -------
+    results : numpy.ndarray
+        Array of shape ``(numSteps, 2**numQ, 2**numQ)`` containing the reduced
+        density matrices at each time step.
+    """
+    csvFilePath = os.path.join(os.getcwd(), directory, fileName + '.csv')
+    t_list, rdo_list = loadCSV(csvFilePath)
+    return t_list, rdo_list

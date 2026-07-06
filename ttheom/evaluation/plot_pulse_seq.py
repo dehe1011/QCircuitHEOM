@@ -27,10 +27,9 @@ def plotPulseSeq(fig=None, ax=None, **kwargs):
     """
 
     # setup tensor trains
-    TTs, params = prepareTTs(**kwargs)
+    TTs, _ = prepareTTs(**kwargs)
 
-    dtFB = params['dtFB']
-    omegaQmax = params['omegaQmax']
+    dtFB = kwargs['dtFB']
     gateTime = [TTs.pulse[i][1].gateTime for i in range(2*TTs.numQ-1)]
 
     numQ = TTs.numQ
@@ -40,7 +39,7 @@ def plotPulseSeq(fig=None, ax=None, **kwargs):
     if numQ == 1:
         ax = [ax]
     for a in ax:
-        a.spines["top"].set_visible(True)
+        # a.spines["top"].set_visible(True)
         a.spines["right"].set_visible(True)
         a.grid(True, which="both", ls="--", lw=0.5, alpha=0.7)
 
@@ -49,11 +48,11 @@ def plotPulseSeq(fig=None, ax=None, **kwargs):
         ampSeq = TTs.pulse[pulseIdx][1].ampSeq
         phaseSeq = TTs.pulse[pulseIdx][1].phaseSeq
 
-        t = np.arange(len(phaseSeq)) * dtFB / omegaQmax
+        t = np.arange(len(phaseSeq)) * dtFB * 1e-3
 
         # --- left axis: amplitude ---
         ax_amp = ax[i]
-        ax_amp.plot(t, ampSeq, color="#459DD9")
+        ax_amp.plot(t, ampSeq, lw=1.1, color="#459DD9")
         ax_amp.set_ylabel(fr"$\Omega_{i+1}$", color="#064D99")
         ax_amp.tick_params(axis="y", labelcolor="#064D99")
         ax_amp.set_yticks([0, np.pi/gateTime[i]], [r'0', r'$\frac{\pi}{\omega t_G}$'])
@@ -62,7 +61,7 @@ def plotPulseSeq(fig=None, ax=None, **kwargs):
 
         # --- right axis: phase ---
         ax_phase = ax_amp.twinx()
-        ax_phase.plot(t, phaseSeq, color="#B74244")
+        ax_phase.plot(t, phaseSeq, lw=1.1, color="#B74244")
         ax_phase.set_ylabel(fr"$\phi_{i+1}$", color="#780B1C")
         ax_phase.tick_params(axis="y", labelcolor="#780B1C")
 
@@ -84,7 +83,7 @@ def plotPulseSeq(fig=None, ax=None, **kwargs):
             JSeq = TTs.pulse[pulseIdx][1].JSeq
 
             ax_J = ax[i + numQ]
-            ax_J.plot(t, JSeq, color="#A546BD")
+            ax_J.plot(t, JSeq, lw=1.1, color="#A546BD")
             ax_J.set_ylabel(rf"$J_{{{i+1}{i+2}}}$", color="#6C0B8D")
             ax_J.tick_params(axis="y", labelcolor="#6C0B8D")
             ax_J.set_yticks([0, np.pi/2/gateTime[numQ+i] ], [r'0', r'$\frac{\pi}{2\omega t_G}$'])

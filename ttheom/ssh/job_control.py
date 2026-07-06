@@ -1,11 +1,8 @@
 import re
-from .io_qc import saveQC
 from .connect_ssh import getClient
 from .commands import commandsForSubmission, getStatus
 
-def submitJob(submissionParams, qcFilePath, omegaQmax, qc, idlingTime, gateList, rho,
-              bath, V, dtFB, stride, depth, bondDim, isRK13=False,
-              useRFPlus=False):
+def submitJob(submissionParams, qcFilePath):
     """Submit a simulation job to an HPC cluster.
 
     Parameters
@@ -38,33 +35,7 @@ def submitJob(submissionParams, qcFilePath, omegaQmax, qc, idlingTime, gateList,
 
     qcFilePath : str
         Local file path where the quantum-circuit QPY data will be saved.
-    omegaQmax : float
-        Maximum qubit angular frequency (rad/ns).
-    qc : qiskit.QuantumCircuit
-        Quantum circuit for the simulation.
-    idlingTime : float
-        Idling time in units of ``omegaQ[0]``.
-    gateList : list
-        List of gate specifications.
-    rho : dict
-        System dictionary with keys ``'numQ'``, ``'rhoIni'``, ``'omegaQ'``.
-    bath : list of dict
-        Bath parameter dictionaries.
-    V : numpy.ndarray
-        3-D system-bath coupling array; ``V[j]`` is the operator for bath ``j``.
-    dtFB : float
-        Integration time step for forward/backward HEOM propagation.
-    stride : int
-        Number of integration steps between successive outputs.
-    depth : list of int
-        FP-HEOM hierarchy depths.
-    bondDim : int
-        Maximum MPS bond dimension.
-    isRK13 : bool, optional
-        Use the 13-stage 5th-order Runge-Kutta scheme. Default ``False``.
-    useRFPlus : bool, optional
-        Use the Redfield+ method. Default ``False``.
-
+    
     Returns
     -------
     job_id : str or None
@@ -77,8 +48,6 @@ def submitJob(submissionParams, qcFilePath, omegaQmax, qc, idlingTime, gateList,
 
     # output parameters for simulation
     filePath = QPYNAME
-    saveQC(filePath, omegaQmax, qc, idlingTime, gateList, rho, bath, V, dtFB,
-           stride, depth, bondDim, isRK13=isRK13, useRFPlus=useRFPlus)
 
     # connect to an HPC server
     client = getClient(submissionParams['hostname'],
