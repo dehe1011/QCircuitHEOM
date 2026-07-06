@@ -7,11 +7,10 @@ import customtkinter as ctk
 from tkinter import filedialog
 import qutip as q
 from qiskit.quantum_info import Operator
-from qiskit import QuantumCircuit
 
-from ..main import prepareTTs, prepareArgs, calcTimeEvo
-from ..evaluation import getFidelity, getConcurrence, loadResult, plotPulseSeq
-from ..ssh import submitJob, loadQC
+from ..main import calcTimeEvoHPC, calcTimeEvo
+from ..evaluation import getFidelity, getConcurrence, plotPulseSeq
+from ..utils import loadQC, loadCSV
 
 from .frames.left_frame import LeftFrame
 from .frames.middle_frame import MiddleFrame
@@ -183,7 +182,7 @@ class TensorHeomApp(ctk.CTk):
             print("No circuit file selected.")
         else: 
             self.qcFilePath = path
-            self.qc = loadQC(self.qcFilePath)
+            self.qc, _ = loadQC(self.qcFilePath)
             self.metadata = self.qc.metadata
             print(f"Found metadata in the uploaded circuit: {self.metadata}")
             print(f"Circuit uploaded successfully from {path}.")
@@ -293,17 +292,19 @@ class TensorHeomApp(ctk.CTk):
         if not filepath:
             print("No result file selected.")
             return
-        self.t_list, self.dm_list = loadResult(filepath)
+        self.t_list, self.dm_list = loadCSV(filepath)
         self.t_list /= self.params.get("omegaQmax", 1.0)
         print("Result file uploaded successfully.")
         self.right_frame.change_state2("normal")
         self._set_step(3)
 
     def submit_local(self):
-        print("Running simulation locally…")
         t0 = time.time()
+
+        print("Running simulation locally…")
         calcTimeEvo(**self.kwargs)
-        self.t_list, self.dm_list = loadResult(self.csvFilePath)
+
+        self.t_list, self.dm_list = loadCSV(self.csvFilePath)
         self.t_list /= self.params.get("omegaQmax", 1.0)
         elapsed = time.time() - t0
         print(f"Simulation finished in {elapsed:.1f} s. Saved to {self.csvFilePath}.")
@@ -321,22 +322,7 @@ class TensorHeomApp(ctk.CTk):
             return
 
         print("Submitting job to HPC...")
-        stride = int(self.kwargs["strideTime"] / self.kwargs["dtFB"])
-        args = prepareArgs(
-            self.kwargs["numQ"], self.kwargs["freqQ"], self.kwargs["gateTime"],
-            self.kwargs["T"], self.kwargs["T1"], self.kwargs["omegaC"],
-            self.kwargs["exp"], self.kwargs["tol"], self.kwargs["rhoIni"],
-            self.kwargs["idlingTime"], self.kwargs["dtFB"],
-            self.kwargs["depth"], self.kwargs["bondDim"],
-        )
-        omegaQmax, rho, bondDim, V, depth, bath, gateList, dtFB, idlingTime = args
-        self.job_id = submitJob(
-            self.submissionParams, self.qcFilePath, omegaQmax,
-            self.kwargs["qc"], idlingTime, gateList, rho, bath, V,
-            dtFB, stride, depth, bondDim,
-            useRFPlus=self.kwargs["useRFPlus"],
-            isRK13=self.kwargs["isRK13"],
-        )
+        self.job_id = calcTimeEvoHPC(self.submissionParams, **self.kwargs)
 
     def download_file(self):
         print("Opening HPC Download window...")
@@ -348,7 +334,7 @@ class TensorHeomApp(ctk.CTk):
             print("No result was downloaded.")
             return
 
-        self.t_list, self.dm_list = loadResult(self.csvFilePath)
+        self.t_list, self.dm_list = loadCSV(self.csvFilePath)
         self.t_list /= self.params.get("omegaQmax", 1.0)
 
         print(f"Result downloaded and saved as {self.csvFilePath}.")
