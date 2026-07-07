@@ -252,7 +252,8 @@ def calcTimeEvoHPC(submissionParams, **kwargs):
 
     fileName, directory = kwargs['fileName'], kwargs.get('directory', None)
     qcFilePath = os.path.join(os.getcwd(), directory, 'qcData_' + fileName + '.qpy')
-    submissionParams['otp'] = getpass.getpass('Your OTP: ')
+    if submissionParams.get('otp') is None:
+        submissionParams['otp'] = getpass.getpass('Your OTP: ')
     jobID = submitJob(submissionParams, qcFilePath)
     return jobID
 
