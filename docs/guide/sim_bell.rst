@@ -69,7 +69,7 @@ Running on HPC
    submissionParams = {
        "hostname":      "cluster.example.org",
        "username":      "myuser",
-       "password":      getpass.getpass("Password: "),
+       "password":      "mypassword",
        "schedulerName": "slurm",
        "numNodes":      1,
        "cpusPerTask":   1,
@@ -106,9 +106,9 @@ Analysis
 
    import matplotlib.pyplot as plt
    fig, axes = plt.subplots(3, 1, sharex=True)
-   axes[0].plot(t_list, fid_list);  axes[0].set_ylabel("Fidelity")
-   axes[1].plot(t_list, conc_list); axes[1].set_ylabel("Concurrence")
+   axes[0].plot(t_list, fid_list);  axes[0].set_ylabel(r"$F$")
+   axes[1].plot(t_list, conc_list); axes[1].set_ylabel(r"$C$")
    axes[2].plot(t_list, log_neg_list); axes[2].set_ylabel(r"$E_N$")
-   axes[-1].set_xlabel("t [ns]")
+   axes[-1].set_xlabel(r"$t$ [ns]")
    plt.tight_layout()
    plt.show()

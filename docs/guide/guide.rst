@@ -57,7 +57,7 @@ For long-running simulations, TensorHEOM can submit jobs to a SLURM cluster.
    submissionParams = {
        "hostname":      "cluster.example.org",
        "username":      "myuser",
-       "password":      getpass.getpass("Password: "),
+       "password":      "mypassword",
        "schedulerName": "slurm",
        "numNodes":      1,
        "cpusPerTask":   4,
@@ -77,22 +77,33 @@ For long-running simulations, TensorHEOM can submit jobs to a SLURM cluster.
    import getpass, os
    from ttheom import downloadResult
 
-   downloadParams = {
-       "hostname":      "cluster.example.org",
-       "username":      "myuser",
-       "password":      getpass.getpass("Password: "),
-       "otp":           getpass.getpass("One-time password: "),
-       "schedulerName": "slurm",
-   }
+   directory = ...
+   fileName = ...
+   csvFilePath = os.path.join(os.getcwd(), directory, fileName + '.csv')
 
-   csvFilePath = os.path.join(os.getcwd(), kwargs["directory"],
-                              kwargs["fileName"] + ".csv")
-   downloadResult(downloadParams, job_id, csvFilePath)
+   jobID = "myjobid"
+
+   downloadParams = {
+      "hostname":      "cluster.example.org",
+      "username":      "myusername",
+      "password":      "mypassword",
+      "schedulerName": "slurm",
+   }
+   downloadParams['otp'] = getpass.getpass('Your OTP: ')
+
+   downloadResult(downloadParams, jobID, csvFilePath)
 
 Numerical convergence
 =====================
 
-Two parameters dominate simulation accuracy and runtime:
+Several parameters dominate simulation accuracy and runtime. Among them are:
+
+``numQ``
+    Number of qubits.
+
+``dtFB``
+    Time step for the forward-backward propagation.  Smaller values improve
+    accuracy but increase runtime.
 
 ``depth``
     FP-HEOM hierarchy depth (per qubit).  Depth ``1`` captures leading-order
@@ -103,9 +114,6 @@ Two parameters dominate simulation accuracy and runtime:
     Maximum MPS bond dimension.  Larger values capture stronger quantum
     correlations.  For a single qubit ``5``–``20`` is typical; two-qubit
     simulations may need ``20``–``100``.
-
-A reliable convergence check: rerun with doubled ``depth`` and ``bondDim``
-and confirm the results differ by less than your target accuracy.
 
 Redfield+ approximation
 =======================

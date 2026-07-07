@@ -73,7 +73,7 @@ Running on HPC
    submissionParams = {
        "hostname":      "cluster.example.org",
        "username":      "myuser",
-       "password":      getpass.getpass("Password: "),
+       "password":      "mypassword",
        "schedulerName": "slurm",
        "numNodes":      1,
        "cpusPerTask":   1,
@@ -112,10 +112,10 @@ which pairs of qubits remain entangled over time:
    en_3 = [getLogarithmicNegativity(rho, transposeQIdx=[2]) for rho in rdo_list]
 
    fig, axes = plt.subplots(4, 1, sharex=True, figsize=(5, 7))
-   axes[0].plot(t_list, fid_list);  axes[0].set_ylabel("Fidelity")
+   axes[0].plot(t_list, fid_list);  axes[0].set_ylabel(r"$F$")
    axes[1].plot(t_list, en_1);      axes[1].set_ylabel(r"$E_N^{1|23}$")
    axes[2].plot(t_list, en_2);      axes[2].set_ylabel(r"$E_N^{2|13}$")
    axes[3].plot(t_list, en_3);      axes[3].set_ylabel(r"$E_N^{3|12}$")
-   axes[-1].set_xlabel("t [ns]")
+   axes[-1].set_xlabel(r"$t$ [ns]")
    plt.tight_layout()
    plt.show()

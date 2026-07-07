@@ -77,7 +77,7 @@ Running on HPC
    submissionParams = {
        "hostname":      "cluster.example.org",
        "username":      "myuser",
-       "password":      getpass.getpass("Password: "),
+       "password":      "mypassword",
        "schedulerName": "slurm",
        "numNodes":      1,
        "cpusPerTask":   1,
@@ -97,17 +97,22 @@ Download the result after the job finishes:
    import getpass, os
    from ttheom import downloadResult
 
-   downloadParams = {
-       "hostname":      "cluster.example.org",
-       "username":      "myuser",
-       "password":      getpass.getpass("Password: "),
-       "otp":           getpass.getpass("OTP: "),
-       "schedulerName": "slurm",
-   }
+   directory = "development/results/hpc/sim_Id"
+   fileName = "Id_s1"
+   csvFilePath = os.path.join(os.getcwd(), directory, fileName + '.csv')
 
-   csvFilePath = os.path.join(os.getcwd(), kwargs["directory"],
-                              kwargs["fileName"] + ".csv")
-   downloadResult(downloadParams, job_id, csvFilePath)
+   jobID = "myjobid"
+
+   downloadParams = {
+      "hostname":      "cluster.example.org",
+      "username":      "myusername",
+      "password":      "mypassword",
+      "schedulerName": "slurm",
+   }
+   import getpass
+   downloadParams['otp'] = getpass.getpass('Your OTP: ')
+
+   downloadResult(downloadParams, jobID, csvFilePath)
 
 Reloading a saved simulation
 -----------------------------
@@ -146,8 +151,8 @@ Compute the gate fidelity with respect to the ideal (noiseless) output state:
 
    import matplotlib.pyplot as plt
    plt.plot(t_list, fidelities)
-   plt.xlabel("t [ns]")
-   plt.ylabel("Fidelity")
+   plt.xlabel(r"$t$ [ns]")
+   plt.ylabel(r"$F$")
    plt.ylim(0, 1.05)
    plt.show()
 

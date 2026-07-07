@@ -86,7 +86,7 @@ Running on HPC
    submissionParams = {
        "hostname":      "cluster.example.org",
        "username":      "myuser",
-       "password":      getpass.getpass("Password: "),
+       "password":      "mypassword",
        "schedulerName": "slurm",
        "numNodes":      1,
        "cpusPerTask":   1,
@@ -116,8 +116,8 @@ Analysis
    fids = [getFidelity(rho, target) for rho in rdo_list]
 
    plt.plot(t_list, fids)
-   plt.xlabel("t [ns]")
-   plt.ylabel("Fidelity")
+   plt.xlabel(r"$t$ [ns]")
+   plt.ylabel(r"$F$")
    plt.ylim(0, 1.05)
    plt.show()
 

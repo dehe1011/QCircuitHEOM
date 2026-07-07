@@ -21,8 +21,7 @@ Your first simulation
 The function :func:`ttheom.calcTimeEvo` accepts physical units (GHz, ns, mK, µs)
 and writes the time-evolved reduced density matrix to a CSV file.
 
-The example below simulates a single qubit under repeated π-pulse pairs
-(similar to an identity check) with broadband Ohmic noise:
+The example below simulates a single qubit under pi-pulse pairs with broadband Ohmic noise:
 
 .. code-block:: python
 
@@ -33,8 +32,7 @@ The example below simulates a single qubit under repeated π-pulse pairs
    # Define the quantum circuit
    qc = QuantumCircuit(1)
    qc.rx(np.pi, 0)
-   qc.delay(0, 0)
-   qc.rx(np.pi, 0)
+   qc.ry(np.pi, 0)
 
    calcTimeEvo(
        fileName="result_1q",      # output file (result_1q.csv)
@@ -69,7 +67,7 @@ Use :func:`ttheom.getResult` to load the CSV back into Python:
    from ttheom import getResult
 
    t_list, rdo_list = getResult("results", "result_1q")
-   # t_list  : 1-D array of time points in ns
+   # t_list  : 1-D array of time points in units of the largest qubit frequency
    # rdo_list: list of 2×2 density matrices
 
 Analysing results
@@ -79,25 +77,19 @@ TensorHEOM provides several analysis functions:
 
 .. code-block:: python
 
-   from ttheom import getResult, getFidelity, getConcurrence, getLogarithmicNegativity
-   from qiskit.quantum_info import Operator
+    from ttheom import getResult, getKwargs, getFidelity, getConcurrence, getLogarithmicNegativity
+    from qiskit.quantum_info import Operator
 
-   t_list, rdo_list = getResult("results", "result_bell")
+    # load kwargs from QPY file 
+    kwargs = getKwargs("results", "result_bell")
 
-   # Load the simulation kwargs (circuit + parameters) saved alongside the CSV
-   from ttheom import getKwargs
-   kwargs = getKwargs("results", "result_bell")
+    # load result from CSV file
+    t_list, rdo_list = getResult("results", "result_bell")
 
-   # Compute the ideal (noiseless) target state
-   U = Operator(kwargs["qc"]).data
-   target = U @ kwargs["rhoIni"] @ U.conj().T
-
-   # Gate fidelity vs time
-   fidelities = [getFidelity(rho, target) for rho in rdo_list]
-
-   # Entanglement measures (2-qubit examples)
-   concurrences  = [getConcurrence(rho) for rho in rdo_list]
-   log_negativity = [getLogarithmicNegativity(rho, transposeQIdx=[0]) for rho in rdo_list]
+    # Post-processing
+    plotQC(**kwargs)
+    plotPulseSeq(**kwargs)
+    plotFidelity(t_list, rdo_list, **kwargs)
 
 Submitting to HPC
 =================
@@ -112,7 +104,7 @@ the job to a SLURM cluster via SSH:
    submissionParams = {
        "hostname":      "cluster.example.org",
        "username":      "myuser",
-       "password":      "mypassword",     # or use getpass.getpass()
+       "password":      "mypassword",
        "schedulerName": "slurm",
        "numNodes":      1,
        "cpusPerTask":   4,
