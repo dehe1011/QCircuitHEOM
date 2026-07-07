@@ -136,9 +136,10 @@ def prepareParams(**kwargs):
 
     Returns
     -------
-    tuple
-        ``(omegaQmax, rho, bondDim, V, depth, bath, gateList, dtFB, idlingTime)``
-        in internal units ready for the TT constructors.
+    params : dict
+        Internal parameter dictionary with keys ``'omegaQmax'``, ``'rho'``,
+        ``'gateList'``, ``'idlingTime'``, ``'bath'``, ``'dtFB'``, ``'depth'``,
+        ``'bondDim'``, ``'stride'``, ``'isRK13'``, ``'useRFPlus'``, and ``'V'``.
     """
     
     omegaQmax, rho, gateList, idlingTime = prepareSystemParams(kwargs['numQ'], kwargs['freqQ'], kwargs['rhoIni'], kwargs['gateTime'], kwargs['idlingTime'])
@@ -228,34 +229,23 @@ def getBathKwargs(omegaQmax, bath):
     return T, T1, omegaC, exp, tol
 
 def getKwargs(directory, fileName):
-    """Convert all internal arguments back to user-facing physical units.
+    """Reconstruct user-facing simulation kwargs from a saved QPY file.
 
     Parameters
     ----------
-    omegaQmax : float
-        Maximum qubit angular frequency (rad/ns).
-    rho : dict
-        Internal system dictionary.
-    bondDim : int
-        MPS bond dimension.
-    V : numpy.ndarray
-        System-bath coupling operators (not returned).
-    depth : list of int
-        FP-HEOM hierarchy depths.
-    bath : list of dict
-        Internal bath parameter dictionaries.
-    gateList : list
-        Internal gate list.
-    dtFB : float
-        Internal integration time step.
-    idlingTime : float
-        Internal idling time.
+    directory : str
+        Directory containing the QPY file.
+    fileName : str
+        Base name of the file (without extension).
 
     Returns
     -------
-    tuple
-        ``(numQ, freqQ, gateTime, T, T1, omegaC, exp, tol, rhoIni,
-        idlingTime, dtFB, depth, bondDim)`` in physical units.
+    kwargs : dict
+        Parameter dictionary in physical units with keys ``'directory'``,
+        ``'fileName'``, ``'numQ'``, ``'freqQ'``, ``'rhoIni'``, ``'gateTime'``,
+        ``'idlingTime'``, ``'T'``, ``'T1'``, ``'omegaC'``, ``'exp'``, ``'tol'``,
+        ``'dtFB'``, ``'depth'``, ``'bondDim'``, ``'strideTime'``, ``'useRFPlus'``,
+        ``'isRK13'``, and ``'qc'``.
     """
     
     qcFilePath = os.path.join(os.getcwd(), directory, 'qcData_' + fileName + '.qpy')

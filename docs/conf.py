@@ -1,7 +1,25 @@
 import os
 import sys
+from unittest.mock import MagicMock
 
 sys.path.insert(0, os.path.abspath(".."))
+
+# Mock optional packages before importing ttheom so that the version string
+# can be read without requiring every runtime dependency to be installed.
+_MOCK_MODULES = [
+    "customtkinter", "tkinter", "tkinter.messagebox", "tkinter.filedialog",
+    "PIL", "PIL.Image", "PIL.ImageTk",
+    "baryrat", "paramiko", "tqdm",
+    "qiskit", "qiskit.qpy", "qiskit.circuit", "qiskit.circuit.library",
+    "qiskit.quantum_info", "qiskit.transpiler",
+    "qutip",
+    "scipy", "scipy.constants", "scipy.integrate", "scipy.linalg",
+    "pandas",
+    "matplotlib", "matplotlib.pyplot", "matplotlib.style",
+    "matplotlib.backends", "matplotlib.backends.backend_tkagg",
+]
+for _mod in _MOCK_MODULES:
+    sys.modules.setdefault(_mod, MagicMock())
 
 import ttheom
 
