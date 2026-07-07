@@ -1,5 +1,5 @@
 # pylint: disable=wrong-import-position
-__version__ = "0.7.0"
+__version__ = "0.8.0"
 
 import pathlib
 import os
@@ -17,6 +17,7 @@ from .circuit import * # requires TTs
 from .dynamics import * # requires TTs
 from .main import *
 from .evaluation import *
+from .mitigation import *
 
 from .ssh import *
 from .cui import *
