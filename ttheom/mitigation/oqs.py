@@ -13,6 +13,35 @@ STANDARD = [
     q.Qobj([[0, 0], [0, 1]]),
 ]
 
+# --------------------------------------------------
+# Check CP and TP conditions for Choi matrices.
+# --------------------------------------------------
+
+
+def is_completely_positive(choi, tol=1e-10):
+    """Check if the Choi matrix is completely positive.
+    See p.16 (top right) in Hashim2024."""
+
+    choi = choi.full()
+    if not np.allclose(choi, choi.conj().T, atol=tol):
+        return False  # Not Hermitian ⇒ not a valid Choi matrix
+    eigvals = np.linalg.eigvalsh(choi)
+    return np.all(eigvals >= -tol)
+
+
+def is_trace_preserving(choi, tol=1e-10):
+    """Check if the Choi matrix is trace preserving.
+    See p.16 (top right) in Hashim2024."""
+
+    choi = choi.full()
+    tr_output = choi[0::2, 0::2] + choi[1::2, 1::2]
+    return np.allclose(tr_output, np.eye(2), atol=tol)
+
+def is_unital(choi, tol=1e-10):
+    choi = choi.full()
+    tr_input = choi[0:2, 0:2] + choi[2:4, 2:4]
+    return np.allclose(tr_input, np.eye(2), atol=tol)
+
 
 # --------------------------------------------------
 # Basis change matrices between standard and pauli representations.
