@@ -12,7 +12,7 @@ from .utils import saveQC, prepareParams
 def prepareTTs(**kwargs):
     """Build and initialize the tensor-train data structures for a simulation.
 
-        Parameters
+    Parameters
     ----------
     fileName : str
         Base name for the output CSV file.
@@ -190,6 +190,8 @@ def calcTimeEvoHPC(submissionParams, **kwargs):
     
     Parameters
     ----------
+    submissionParams : dict
+        Submission parameters for the HPC job. User will be prompted to provide OTP.
     fileName : str
         Base name for the output CSV file.
     directory : str or None, optional
@@ -228,6 +230,11 @@ def calcTimeEvoHPC(submissionParams, **kwargs):
         Use the Redfield+ method. Default ``False``.
     isRK13 : bool, optional
         Use the 13-stage Runge-Kutta scheme. Default ``False``.
+
+    Returns
+    -------
+    jobID : str or int
+        The job ID returned from the HPC submission.
     """
 
     params = prepareParams(**kwargs)
