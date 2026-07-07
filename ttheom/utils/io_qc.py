@@ -3,6 +3,22 @@ import numpy as np
 import qiskit.qpy as qpy
 
 def saveQC(qcFilePath, qc, params):
+    """Serialise a quantum circuit and its simulation parameters to a QPY file.
+
+    Parameters
+    ----------
+    qcFilePath : str
+        Destination file path (should end in ``.qpy``).
+    qc : qiskit.QuantumCircuit
+        Circuit to save.
+    params : dict
+        Internal parameter dictionary produced by :func:`prepareParams`.
+
+    Returns
+    -------
+    metadata : dict
+        The metadata dict that was stored in ``qc.metadata``.
+    """
 
     metadata = params.copy()
     
@@ -28,6 +44,21 @@ def saveQC(qcFilePath, qc, params):
     return metadata
 
 def loadQC(qcFilePath):
+    """Load a quantum circuit and its simulation parameters from a QPY file.
+
+    Parameters
+    ----------
+    qcFilePath : str
+        Path to the QPY file written by :func:`saveQC`.
+
+    Returns
+    -------
+    qc : qiskit.QuantumCircuit
+        The deserialized quantum circuit.
+    params : dict
+        Internal parameter dictionary with ``'rhoIni'`` and ``'V'``
+        reconstructed as complex NumPy arrays.
+    """
 
     # load the quantum circuit from a QPY file
     with open(qcFilePath, 'rb') as file:

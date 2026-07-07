@@ -2,7 +2,26 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def plotRDO(t_list, rdo_list, **kwargs):
-    """Plot the elements of a list of density matrices over time."""
+    """Plot all elements of the reduced density matrix over time.
+
+    Parameters
+    ----------
+    t_list : numpy.ndarray
+        1-D array of time points (in internal units; converted to ns using
+        ``freqQ`` from *kwargs*).
+    rdo_list : list of numpy.ndarray
+        List of density matrices, one per time step.
+    **kwargs
+        Must contain ``"freqQ"`` (list of qubit frequencies in GHz).
+        All other keys are ignored.
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        The figure object.
+    axes : numpy.ndarray of matplotlib.axes.Axes
+        2-D array of axes with shape ``(dim, dim)``.
+    """
 
     omegaQ = 2*np.pi*np.array(kwargs['freqQ'])
     omegaQmax = max(omegaQ)
