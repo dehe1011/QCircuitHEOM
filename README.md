@@ -121,9 +121,9 @@ GUI().mainloop()
 
 ## Documentation
 
-[![Documentation Status](https://readthedocs.org/projects/tensorheom/badge/?version=latest)](https://tensorheom.readthedocs.io/en/latest/)
+[![Documentation Status](https://readthedocs.org/projects/qcircuitheom/badge/?version=latest)](https://qcircuitheom.readthedocs.io/en/latest/)
 
-The documentation is available on Read the Docs: https://tensorheom.readthedocs.io/en/latest/
+The documentation is available on Read the Docs: https://qcircuitheom.readthedocs.io/en/latest/
 
 ## References
 
