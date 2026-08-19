@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-    <a href="https://tensorheom.readthedocs.io/en/latest/">
-        <img src="https://readthedocs.org/projects/tensorheom/badge/?version=latest"
+    <a href="https://qcircuitheom.readthedocs.io/en/latest/">
+        <img src="https://readthedocs.org/projects/qcircuitheom/badge/?version=latest"
             alt="Documentation Status" /></a>
     <a href="https://opensource.org/licenses/BSD-3-Clause">
         <img src="https://img.shields.io/badge/license-New%20BSD-blue.svg"
