@@ -37,7 +37,7 @@ Running locally
 
 .. code-block:: python
 
-   from ttheom import calcTimeEvo
+   from qcheom import calcTimeEvo
 
    kwargs = {
        "numQ":       1,
@@ -72,7 +72,7 @@ Running on HPC
 .. code-block:: python
 
    import getpass
-   from ttheom import calcTimeEvoHPC
+   from qcheom import calcTimeEvoHPC
 
    submissionParams = {
        "hostname":      "cluster.example.org",
@@ -95,7 +95,7 @@ Download the result after the job finishes:
 .. code-block:: python
 
    import getpass, os
-   from ttheom import downloadResult
+   from qcheom import downloadResult
 
    directory = "development/results/hpc/sim_Id"
    fileName = "Id_s1"
@@ -117,12 +117,12 @@ Download the result after the job finishes:
 Reloading a saved simulation
 -----------------------------
 
-:func:`ttheom.getKwargs` reconstructs the full parameter set from the QPY file
+:func:`qcheom.getKwargs` reconstructs the full parameter set from the QPY file
 saved alongside the CSV:
 
 .. code-block:: python
 
-   from ttheom import getKwargs
+   from qcheom import getKwargs
 
    kwargs = getKwargs("results/sim_Id", "Id_s1")
    # kwargs["qc"]    – the Qiskit circuit
@@ -138,7 +138,7 @@ Compute the gate fidelity with respect to the ideal (noiseless) output state:
 
    import numpy as np
    from qiskit.quantum_info import Operator
-   from ttheom import getResult, getKwargs, getFidelity
+   from qcheom import getResult, getKwargs, getFidelity
 
    kwargs = getKwargs("results/sim_Id", "Id_s1")
    t_list, rdo_list = getResult("results/sim_Id", "Id_s1")
@@ -160,7 +160,7 @@ You can also visualise the full density-matrix evolution:
 
 .. code-block:: python
 
-   from ttheom import plotRDO
+   from qcheom import plotRDO
 
    fig, axes = plotRDO(t_list, rdo_list, **kwargs)
    plt.show()

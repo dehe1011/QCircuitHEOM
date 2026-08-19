@@ -1,11 +1,11 @@
 # pylint: disable=wrong-import-position
-__version__ = "0.8.0"
+__version__ = "0.1.0"
 
 import pathlib
 import os
 
 ROOT_DIR = str(pathlib.Path(__file__).absolute().parent.parent)
-DATA_DIR = os.path.join(ROOT_DIR, "ttheom", "data")
+DATA_DIR = os.path.join(ROOT_DIR, "qcheom", "data")
 
 from .utils import *
 

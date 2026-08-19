@@ -41,10 +41,10 @@ ctk.set_default_color_theme("blue")
 
 # ----------------------------------------------------------------------
 
-class TensorHeomApp(ctk.CTk):
+class GUI(ctk.CTk):
     def __init__(self):
         super().__init__()
-        self.title("TensorHEOM")
+        self.title("QCircuitHEOM")
         self.minsize(900, 600)
 
         # ── state ────────────────────────────────────────────────────────
@@ -81,7 +81,7 @@ class TensorHeomApp(ctk.CTk):
         self._header.grid_columnconfigure(1, weight=1)
 
         self._title_lbl = ctk.CTkLabel(
-            self._header, text="  TensorHEOM",
+            self._header, text="  QCircuitHEOM",
             font=ctk.CTkFont(size=17, weight="bold"),
             text_color=("#1a73e8", "#4fa3f7"),
         )
@@ -134,7 +134,7 @@ class TensorHeomApp(ctk.CTk):
     # ------------------------------------------------------------------
 
     def open_github(self):
-        webbrowser.open("https://github.com/dehe1011/TensorHEOM")
+        webbrowser.open("https://github.com/dehe1011/QCircuitHEOM")
 
     def open_paper(self):
         webbrowser.open("http://arxiv.org/abs/2510.05872")

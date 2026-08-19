@@ -4,7 +4,7 @@ from unittest.mock import MagicMock
 
 sys.path.insert(0, os.path.abspath(".."))
 
-# Mock optional packages before importing ttheom so that the version string
+# Mock optional packages before importing qcheom so that the version string
 # can be read without requiring every runtime dependency to be installed.
 _MOCK_MODULES = [
     "customtkinter", "tkinter", "tkinter.messagebox", "tkinter.filedialog",
@@ -21,12 +21,12 @@ _MOCK_MODULES = [
 for _mod in _MOCK_MODULES:
     sys.modules.setdefault(_mod, MagicMock())
 
-import ttheom
+import qcheom
 
-project = "TensorHEOM"
+project = "QCircuitHEOM"
 copyright = "2026, Dennis Herb"
 author = "Dennis Herb"
-release = ttheom.__version__
+release = qcheom.__version__
 
 extensions = [
     "sphinx_rtd_theme",
@@ -98,7 +98,7 @@ html_theme_options = {
 html_context = {
     "display_github": True,
     "github_user": "dehe1011",
-    "github_repo": "TensorHEOM",
+    "github_repo": "QCircuitHEOM",
     "github_version": "main",
     "conf_py_path": "/docs/",
 }

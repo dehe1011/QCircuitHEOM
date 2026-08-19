@@ -15,21 +15,21 @@
     <!-- <a href='https://github.com/psf/black'>
         <img src='https://img.shields.io/badge/code%20style-black-000000.svg'
             alt='Code Style: black' /></a> -->
-    <a href="https://pypi.org/project/ttheom/">
-        <img src="https://img.shields.io/pypi/v/ttheom.svg"
+    <a href="https://pypi.org/project/qcheom/">
+        <img src="https://img.shields.io/pypi/v/qcheom.svg"
             alt="PyPI version"></a>
-    <a href="https://pypi.org/project/ttheom/">
-        <img src="https://img.shields.io/pypi/pyversions/ttheom.svg"
+    <a href="https://pypi.org/project/qcheom/">
+        <img src="https://img.shields.io/pypi/pyversions/qcheom.svg"
             alt="Python versions"></a>
 </p>
 
 ---
 
-# TensorHEOM
+# QCircuitHEOM
 
 **Authors: Kiyoto Nakamura, Dennis Herb**
 
-TensorHEOM is a Python package for simulating quantum circuits in non-Markovian environments using free-pole hierarchical equations of motion (FP-HEOM) and tensor-train (TT) compression.
+QCircuitHEOM is a Python package for simulating quantum circuits in non-Markovian environments using free-pole hierarchical equations of motion (FP-HEOM) and tensor-train (TT) compression.
 
 The package is designed for superconducting-qubit simulations and connects circuit-level Qiskit input with microscopic open-system dynamics.
 
@@ -39,10 +39,10 @@ The package is designed for superconducting-qubit simulations and connects circu
 
 ## Installation
 
-Install TensorHEOM from PyPI with
+Install QCircuitHEOM from PyPI with
 
 ```bash
-pip install ttheom
+pip install qcheom
 ```
 
 ## Basic usage
@@ -51,11 +51,11 @@ A typical workflow is:
 
 1. Define a Qiskit quantum circuit.
 2. Specify system, bath, and numerical parameters.
-3. Run the TensorHEOM simulation.
+3. Run the QCircuitHEOM simulation.
 
 ```python
 from qiskit import QuantumCircuit
-from ttheom import calcTimeEvo
+from qcheom import calcTimeEvo
 
 qc = QuantumCircuit(1)
 qc.h(0)
@@ -85,7 +85,7 @@ calcTimeEvo(
 
 ```python
 import os
-from ttheom import *
+from qcheom import *
 
 directory = os.getcwd()
 fileName = 'result'
@@ -107,12 +107,12 @@ plotRDO(t_list, rdo_list, **kwargs)
 
 ## Graphical interface
 
-TensorHEOM also provides a graphical user interface:
+QCircuitHEOM also provides a graphical user interface:
 
 ```python
-from ttheom import TensorHeomApp
+from qcheom import GUI
 
-TensorHeomApp().mainloop()
+GUI().mainloop()
 ```
 
 <p align="center">
@@ -134,7 +134,7 @@ Recent papers from our group:
 
 ## License
 
-TensorHEOM is distributed under the BSD 3-Clause License.
+QCircuitHEOM is distributed under the BSD 3-Clause License.
 
 ## Support
 

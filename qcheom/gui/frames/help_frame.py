@@ -19,7 +19,7 @@ class HelpFrame(ctk.CTkFrame):
         # Logo
         try:
             img = Image.open(
-                os.path.join(ROOT_DIR, "ttheom", "gui", "logo.png")
+                os.path.join(ROOT_DIR, "qcheom", "gui", "logo.png")
             )
             width = 120
             height = int(width * img.height / img.width)

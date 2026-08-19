@@ -5,7 +5,7 @@ API Documentation
 *****************
 
 This chapter contains automatically generated API documentation for all public
-classes and functions in TensorHEOM.
+classes and functions in QCircuitHEOM.
 
 The API is organised into two files:
 
@@ -13,7 +13,7 @@ The API is organised into two files:
   bath decomposition, pulse types, tensor-train classes, circuit compilation,
   dynamics, and HPC utilities.
 - **Top-level Functions** (:doc:`functions`) — the functions you use most often,
-  importable directly via ``from ttheom import ...``.
+  importable directly via ``from qcheom import ...``.
 
 .. toctree::
    :maxdepth: 3

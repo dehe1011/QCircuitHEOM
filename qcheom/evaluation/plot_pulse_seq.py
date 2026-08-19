@@ -16,7 +16,7 @@ def plotPulseSeq(fig=None, ax=None, **kwargs):
     ax : matplotlib.axes.Axes or numpy.ndarray of Axes, optional
         Existing axes to draw into. If ``None``, new axes are created.
     **kwargs
-        Keyword arguments forwarded to :func:`~ttheom.main.prepareTTs`.
+        Keyword arguments forwarded to :func:`~qcheom.main.prepareTTs`.
 
     Returns
     -------

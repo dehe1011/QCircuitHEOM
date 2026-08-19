@@ -7,7 +7,7 @@ functions, grouped by subsystem.
 Pulse types and gate specifications
 -------------------------------------
 
-.. currentmodule:: ttheom.pulse
+.. currentmodule:: qcheom.pulse
 
 .. autofunction:: setGates
 .. autofunction:: getGate
@@ -19,7 +19,7 @@ Pulse types and gate specifications
 Tensor-train representation
 ----------------------------
 
-.. currentmodule:: ttheom.tt
+.. currentmodule:: qcheom.tt
 
 .. autoclass:: TTs
 .. autoclass:: TTsTwoLevelId
@@ -30,7 +30,7 @@ Tensor-train representation
 Circuit compilation
 -------------------
 
-.. currentmodule:: ttheom.circuit
+.. currentmodule:: qcheom.circuit
 
 .. autofunction:: setPulseSeq
 .. autofunction:: transform
@@ -39,7 +39,7 @@ Circuit compilation
 Time evolution
 --------------
 
-.. currentmodule:: ttheom.dynamics
+.. currentmodule:: qcheom.dynamics
 
 .. autoclass:: timeEvolution
 .. autofunction:: zRightOrth
@@ -50,7 +50,7 @@ Time evolution
 HPC cluster support
 --------------------
 
-.. currentmodule:: ttheom.ssh
+.. currentmodule:: qcheom.ssh
 
 .. autofunction:: submitJob
 .. autofunction:: downloadResult

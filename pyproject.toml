@@ -1,5 +1,5 @@
 [project]
-name = "ttheom_dehe1011"
+name = "qcheom_dehe1011"
 description = "A Python package for simulating quantum circuits in non-Markovian environments using free-pole hierarchical equations of motion (FP-HEOM) and tensor-train (TT) compression."
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.8"
@@ -16,10 +16,10 @@ authors = [
 dynamic = ["version", "dependencies", "optional-dependencies"]
 
 [tool.setuptools]
-packages = ["ttheom", "ttheom.gui"]
+packages = ["qcheom", "qcheom.gui"]
 
 [tool.setuptools.dynamic]
-version = {attr = "ttheom.__version__"}
+version = {attr = "qcheom.__version__"}
 dependencies = {file = "requirements/requirements.txt"}
 
 [tool.setuptools.dynamic.optional-dependencies]
@@ -27,7 +27,7 @@ dev = { file = "requirements/dev-requirements.txt" }
 docs = { file = "requirements/doc-requirements.txt" }
 
 [project.urls]
-repository = "https://github.com/dehe1011/TensorHEOM"
+repository = "https://github.com/dehe1011/QCircuitHEOM"
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]

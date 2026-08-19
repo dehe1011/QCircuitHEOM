@@ -20,9 +20,9 @@ class TTs(ABC):
     ptrBra : list
         Pointers to the bra (column) indices of each spin.
     rho : numpy.ndarray
-        1-D array of :class:`~ttheom.tt.tt.zTT` cores representing the MPS.
+        1-D array of :class:`~qcheom.tt.tt.zTT` cores representing the MPS.
     H : numpy.ndarray
-        2-D array of :class:`~ttheom.tt.tt.zTT` cores representing the MPO.
+        2-D array of :class:`~qcheom.tt.tt.zTT` cores representing the MPO.
     omegaQSeq : numpy.ndarray
         Time sequence of qubit frequencies.
     pulse : list
@@ -191,7 +191,7 @@ class TTs(ABC):
 
 
     def setH(self, coreIn, TTOut):
-        """Copy an MPO core array into a :class:`~ttheom.tt.tt.zTT` object.
+        """Copy an MPO core array into a :class:`~qcheom.tt.tt.zTT` object.
 
         Parameters
         ----------

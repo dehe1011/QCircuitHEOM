@@ -10,9 +10,9 @@ include MANIFEST.in
 include requirements/*.txt
 
 # Include files in the package's root directory
-include ttheom/*.mplstyle
+include qcheom/*.mplstyle
 # Include all .py files
-recursive-include ttheom *.py
+recursive-include qcheom *.py
 
 # Include specific data files
-include ttheom/figures/*.png
+include qcheom/gui/*.png

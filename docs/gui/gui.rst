@@ -4,7 +4,7 @@
 Graphical User Interface (GUI)
 *******************************
 
-TensorHEOM provides an optional graphical user interface built with
+QCircuitHEOM provides an optional graphical user interface built with
 `CustomTkinter <https://github.com/TomSchimansky/CustomTkinter>`_.
 The GUI is designed for users who prefer an interactive workflow
 without writing code.
@@ -14,15 +14,15 @@ Launching the GUI
 
 .. code-block:: python
 
-   from ttheom import TensorHeomApp
+   from qcheom import GUI
 
-   TensorHeomApp().mainloop()
+   GUI().mainloop()
 
 Or from the command line after installing the package:
 
 .. code-block:: bash
 
-   python -c "from ttheom import TensorHeomApp; TensorHeomApp().mainloop()"
+   python -c "from qcheom import GUI; GUI().mainloop()"
 
 Main window
 ===========

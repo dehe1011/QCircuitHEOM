@@ -1,11 +1,11 @@
-# TensorHEOM Custom Matplotlib Stylefile
+# QCircuitHEOM Custom Matplotlib Stylefile
 # --------------------------------
 
-# Improting TensorHEOM saves this Matplotlib style file in the directory specified by
+# Improting QCircuitHEOM saves this Matplotlib style file in the directory specified by
 # `import matplotlib as mpl; mpl.get_configdir()`
 # >>> 'C:\\Users\\<username>\\.matplotlib'
 # Once saved, it becomes globally accessible and can be applied using
-# `import matplotlib.pyplot as plt; plt.style.use('ttheom-default')`.
+# `import matplotlib.pyplot as plt; plt.style.use('qcheom-default')`.
 
 # LaTeX rendering
 # ---------------
