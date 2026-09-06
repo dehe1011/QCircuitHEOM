@@ -132,10 +132,6 @@ Recent papers from our group:
 * K. Nakamura and J. Ankerhold, Entanglement dynamics and performance of two-qubit gates for superconducting qubits under non-Markovian effects. [*Physical Review Research* **8**, 013337 (2026).](https://doi.org/10.1103/b5jp-s6t2)
 * K. Nakamura and J. Ankerhold, Impact of time-retarded noise on dynamical decoupling schemes for qubits. [*Physical Review B* **111**, 064503 (2025).](https://doi.org/10.1103/PhysRevB.111.064503)
 
-## Acknowledgements
-The implementation of tensor contraction routines was independently developed from scratch based on our understanding of the implementation in `TT-toolbox` project [Ivan (2026). oseledets/TT-Toolbox (https://github.com/oseledets/TT-Toolbox), GitHub. Retrieved September 6, 2026.]. 
-The original source code is not included in this repository.
-
 ## License
 
 QCircuitHEOM is distributed under the BSD 3-Clause License.
