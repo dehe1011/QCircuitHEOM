@@ -5,7 +5,7 @@ User Guide
 **********
 
 This guide walks through four worked examples that cover the main use-cases of
-TensorHEOM.  Each page shows how to set up the quantum circuit, run the
+QCircuitHEOM.  Each page shows how to set up the quantum circuit, run the
 simulation locally or on an HPC cluster, reload the results, and compute
 physical observables.
 
@@ -21,7 +21,7 @@ physical observables.
 Workflow overview
 =================
 
-A typical TensorHEOM simulation follows these steps:
+A typical QCircuitHEOM simulation follows these steps:
 
 .. code-block:: text
 
@@ -37,22 +37,22 @@ A typical TensorHEOM simulation follows these steps:
          ↓
    5. Analyse with getFidelity(), getConcurrence(), ...
 
-The function :func:`ttheom.calcTimeEvo` accepts SI-adjacent units (GHz, ns,
+The function :func:`qcheom.calcTimeEvo` accepts SI-adjacent units (GHz, ns,
 mK, µs) and performs all internal unit conversions automatically.
-The companion :func:`ttheom.calcTimeEvoHPC` has the same signature but submits
+The companion :func:`qcheom.calcTimeEvoHPC` has the same signature but submits
 the calculation to a SLURM cluster via SSH and returns the job ID.
 
 HPC workflow
 ============
 
-For long-running simulations, TensorHEOM can submit jobs to a SLURM cluster.
+For long-running simulations, QCircuitHEOM can submit jobs to a SLURM cluster.
 
 **Step 1: submit**
 
 .. code-block:: python
 
    import getpass
-   from ttheom import calcTimeEvoHPC
+   from qcheom import calcTimeEvoHPC
 
    submissionParams = {
        "hostname":      "cluster.example.org",
@@ -75,7 +75,7 @@ For long-running simulations, TensorHEOM can submit jobs to a SLURM cluster.
 .. code-block:: python
 
    import getpass, os
-   from ttheom import downloadResult
+   from qcheom import downloadResult
 
    directory = ...
    fileName = ...

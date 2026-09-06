@@ -163,9 +163,9 @@ class timeEvolution():
         Parameters
         ----------
         rho : numpy.ndarray
-            1-D array of :class:`~ttheom.tt.tt.zTT` (MPS); overwritten in place.
+            1-D array of :class:`~qcheom.tt.tt.zTT` (MPS); overwritten in place.
         H : numpy.ndarray
-            2-D array of :class:`~ttheom.tt.tt.zTT` (MPO) representing the Hamiltonian.
+            2-D array of :class:`~qcheom.tt.tt.zTT` (MPO) representing the Hamiltonian.
         time : float
             Current time.
         stepNum : int
@@ -366,7 +366,7 @@ def zRightOrth(rho):
     Parameters
     ----------
     rho : numpy.ndarray
-        1-D array of :class:`~ttheom.tt.tt.zTT` MPS cores; modified in place.
+        1-D array of :class:`~qcheom.tt.tt.zTT` MPS cores; modified in place.
     """
 
     numCore = len(rho)

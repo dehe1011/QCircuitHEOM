@@ -2,6 +2,7 @@
 
 .venv/
 .venv_test/
+.venv_test2/
 .vscode/
 .pre-commit-config.yaml
 howto/
@@ -16,7 +17,7 @@ script.py
 scripts/
 data/
 development/
-ttheom/samples/
+qcheom/samples/
 simulations_GUI/
 
 result.csv

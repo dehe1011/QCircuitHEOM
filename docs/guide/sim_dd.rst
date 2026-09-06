@@ -45,7 +45,7 @@ Running locally
 .. code-block:: python
 
    import numpy as np, scipy.constants as c
-   from ttheom import calcTimeEvo
+   from qcheom import calcTimeEvo
 
    kwargs = {
        "numQ":       1,
@@ -81,7 +81,7 @@ Running on HPC
 .. code-block:: python
 
    import getpass
-   from ttheom import calcTimeEvoHPC
+   from qcheom import calcTimeEvoHPC
 
    submissionParams = {
        "hostname":      "cluster.example.org",
@@ -105,7 +105,7 @@ Analysis
 
    import numpy as np, matplotlib.pyplot as plt
    from qiskit.quantum_info import Operator
-   from ttheom import getResult, getKwargs, getFidelity
+   from qcheom import getResult, getKwargs, getFidelity
 
    kwargs   = getKwargs("results/sim_DD", "xy4_s1")
    t_list, rdo_list = getResult("results/sim_DD", "xy4_s1")

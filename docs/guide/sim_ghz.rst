@@ -27,7 +27,7 @@ Running locally
 
 .. code-block:: python
 
-   from ttheom import calcTimeEvo
+   from qcheom import calcTimeEvo
 
    kwargs = {
        "numQ":       3,
@@ -68,7 +68,7 @@ Running on HPC
 .. code-block:: python
 
    import getpass
-   from ttheom import calcTimeEvoHPC
+   from qcheom import calcTimeEvoHPC
 
    submissionParams = {
        "hostname":      "cluster.example.org",
@@ -95,7 +95,7 @@ which pairs of qubits remain entangled over time:
 
    import matplotlib.pyplot as plt
    from qiskit.quantum_info import Operator
-   from ttheom import (getResult, getKwargs, getFidelity,
+   from qcheom import (getResult, getKwargs, getFidelity,
                        getLogarithmicNegativity)
 
    kwargs   = getKwargs("results/sim_GHZ", "GHZ_s2")

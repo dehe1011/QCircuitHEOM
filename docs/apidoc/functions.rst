@@ -1,12 +1,12 @@
 Top-level Functions
 ===================
 
-This section documents the public functions available at the top level (i.e., importable directly via ``from ttheom import ...``).
+This section documents the public functions available at the top level (i.e., importable directly via ``from qcheom import ...``).
 
 High-level simulation interface
 --------------------------------
 
-.. currentmodule:: ttheom.main
+.. currentmodule:: qcheom.main
 
 .. autofunction:: prepareTTs
 .. autofunction:: calcTimeEvo
@@ -15,7 +15,7 @@ High-level simulation interface
 Physical-unit helpers
 ----------------------
 
-.. currentmodule:: ttheom.utils.prepare
+.. currentmodule:: qcheom.utils.prepare
 
 .. autofunction:: prepareParams
 .. autofunction:: prepareSystemParams
@@ -27,12 +27,12 @@ Physical-unit helpers
 I/O utilities
 -------------
 
-.. currentmodule:: ttheom.utils.io_qc
+.. currentmodule:: qcheom.utils.io_qc
 
 .. autofunction:: saveQC
 .. autofunction:: loadQC
 
-.. currentmodule:: ttheom.utils.io_csv
+.. currentmodule:: qcheom.utils.io_csv
 
 .. autofunction:: getResult
 .. autofunction:: loadCSV
@@ -40,7 +40,7 @@ I/O utilities
 Bath decomposition
 ------------------
 
-.. currentmodule:: ttheom.bath
+.. currentmodule:: qcheom.bath
 
 .. autofunction:: getBathParams
 .. autofunction:: broadbandNoise
@@ -48,7 +48,7 @@ Bath decomposition
 Evaluation and analysis
 -----------------------
 
-.. currentmodule:: ttheom.evaluation
+.. currentmodule:: qcheom.evaluation
 
 .. autofunction:: getFidelity
 .. autofunction:: getConcurrence

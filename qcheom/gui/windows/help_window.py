@@ -5,10 +5,10 @@ from ..gui_utils import PAD_OUTER
 # ----------------------------------------------------------------------
 
 _HELP_TEXT = """\
-TensorHEOM — Help & Quick Reference
+QCircuitHEOM — Help & Quick Reference
 ====================================
 
-TensorHEOM simulates quantum circuits under non-Markovian Gaussian noise
+QCircuitHEOM simulates quantum circuits under non-Markovian Gaussian noise
 using FP-HEOM and tensor-train compression. The GUI follows the workflow
 shown in the top navigation bar:
 
@@ -134,7 +134,7 @@ Plot Results
 
 SAVED FILES
 -----------
-TensorHEOM saves the input circuit and simulation data automatically.
+QCircuitHEOM saves the input circuit and simulation data automatically.
 
   qcData_<filename>.qpy
     Qiskit circuit in QPY format, including simulation metadata.
@@ -164,7 +164,7 @@ Hierarchy depth
   checked for convergence.
 
 Source code:
-  https://github.com/dehe1011/TensorHEOM
+  https://github.com/dehe1011/QCircuitHEOM
 """
 
 # ----------------------------------------------------------------------
@@ -173,7 +173,7 @@ Source code:
 class HelpWindow(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)
-        self.title("Help — TensorHEOM")
+        self.title("Help — QCircuitHEOM")
         self.geometry("580x540")
         self.minsize(480, 400)
         self.grid_rowconfigure(1, weight=1)

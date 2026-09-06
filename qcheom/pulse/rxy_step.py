@@ -4,7 +4,7 @@ from .u3 import U3Pulse
 class rxyStep(U3Pulse):
     """Single-qubit pulse with abrupt (step-function) amplitude changes.
 
-    Implements the :class:`~ttheom.pulse.abstract_pulse.abstractPulse`
+    Implements the :class:`~qcheom.pulse.abstract_pulse.abstractPulse`
     interface using a U3-gate decomposition.
 
     Attributes

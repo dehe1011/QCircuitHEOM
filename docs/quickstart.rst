@@ -11,14 +11,14 @@ Installation
 
 .. code-block:: bash
 
-   pip install ttheom
+   pip install qcheom
 
 For detailed installation instructions see :doc:`installation`.
 
 Your first simulation
 =====================
 
-The function :func:`ttheom.calcTimeEvo` accepts physical units (GHz, ns, mK, µs)
+The function :func:`qcheom.calcTimeEvo` accepts physical units (GHz, ns, mK, µs)
 and writes the time-evolved reduced density matrix to a CSV file.
 
 The example below simulates a single qubit under pi-pulse pairs with broadband Ohmic noise:
@@ -27,7 +27,7 @@ The example below simulates a single qubit under pi-pulse pairs with broadband O
 
    import numpy as np
    from qiskit import QuantumCircuit
-   from ttheom import calcTimeEvo
+   from qcheom import calcTimeEvo
 
    # Define the quantum circuit
    qc = QuantumCircuit(1)
@@ -60,11 +60,11 @@ of each density-matrix entry.
 Reading results
 ===============
 
-Use :func:`ttheom.getResult` to load the CSV back into Python:
+Use :func:`qcheom.getResult` to load the CSV back into Python:
 
 .. code-block:: python
 
-   from ttheom import getResult
+   from qcheom import getResult
 
    t_list, rdo_list = getResult("results", "result_1q")
    # What is "results" and "result_1q"?
@@ -74,11 +74,11 @@ Use :func:`ttheom.getResult` to load the CSV back into Python:
 Analysing results
 =================
 
-TensorHEOM provides several analysis functions:
+QCircuitHEOM provides several analysis functions:
 
 .. code-block:: python
 
-    from ttheom import getResult, getKwargs, getFidelity, getConcurrence, getLogarithmicNegativity
+    from qcheom import getResult, getKwargs, getFidelity, getConcurrence, getLogarithmicNegativity
     from qiskit.quantum_info import Operator
 
     # load kwargs from QPY file 
@@ -95,12 +95,12 @@ TensorHEOM provides several analysis functions:
 Submitting to HPC
 =================
 
-For long-running calculations, use :func:`ttheom.calcTimeEvoHPC` to submit
+For long-running calculations, use :func:`qcheom.calcTimeEvoHPC` to submit
 the job to a SLURM cluster via SSH:
 
 .. code-block:: python
 
-   from ttheom import calcTimeEvoHPC
+   from qcheom import calcTimeEvoHPC
 
    submissionParams = {
        "hostname":      "cluster.example.org",
@@ -119,7 +119,7 @@ the job to a SLURM cluster via SSH:
    print("Job submitted:", job_id)
 
 After the job finishes, download the result with
-:func:`ttheom.downloadResult`.
+:func:`qcheom.downloadResult`.
 
 Parameter reference
 ===================

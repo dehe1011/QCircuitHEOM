@@ -2,12 +2,12 @@
    :align: center
    :width: 2.5in
 
-TensorHEOM Documentation
-=========================
+QCircuitHEOM Documentation
+==========================
 
-**Version:** |release| | **License:** BSD 3-Clause | `GitHub <https://github.com/dehe1011/TensorHEOM>`_
+**Version:** |release| | **License:** BSD 3-Clause | `GitHub <https://github.com/dehe1011/QCircuitHEOM>`_
 
-TensorHEOM is a Python package for simulating quantum circuits in **non-Markovian environments**
+QCircuitHEOM is a Python package for simulating quantum circuits in **non-Markovian environments**
 using free-pole hierarchical equations of motion (FP-HEOM) combined with tensor-train (TT) compression.
 It is designed for superconducting-qubit simulations and connects circuit-level `Qiskit <https://qiskit.org>`_
 input with microscopic open-system dynamics.
@@ -33,7 +33,7 @@ Quick Install
 
 .. code-block:: bash
 
-   pip install ttheom
+   pip install qcheom
 
 For a full installation guide including editable installs and platform-specific
 instructions see :doc:`installation`.
@@ -44,7 +44,7 @@ Minimal Example
 .. code-block:: python
 
    from qiskit import QuantumCircuit
-   from ttheom import calcTimeEvo
+   from qcheom import calcTimeEvo
 
    qc = QuantumCircuit(1)
    qc.h(0)

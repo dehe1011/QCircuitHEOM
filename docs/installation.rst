@@ -3,13 +3,13 @@
 Installation Guide
 ******************
 
-Welcome to the installation guide for `TensorHEOM`. Follow the steps below to install the package, set up a virtual environment, and start using the Graphical User Interface.
+Welcome to the installation guide for `QCircuitHEOM`. Follow the steps below to install the package, set up a virtual environment, and start using the Graphical User Interface.
 
 
 Installation via PyPI
 =====================
 
-The easiest way to install `TensorHEOM` is through PyPI. For best results, we recommend creating a new virtual environment to avoid package conflicts.
+The easiest way to install `QCircuitHEOM` is through PyPI. For best results, we recommend creating a new virtual environment to avoid package conflicts.
 
 Steps
 -----
@@ -36,17 +36,17 @@ Steps
 
         source .venv/bin/activate
 
-3. **Install the `TensorHEOM` Package**:
+3. **Install the `QCircuitHEOM` Package**:
 
    .. code-block:: bash
 
-      pip install ttheom
+      pip install qcheom
 
 
 Installation in editable mode via GitHub
 ========================================
 
-If you plan to contribute to the development or make changes to the source code, install `TensorHEOM` in editable mode by cloning its GitHub repository.
+If you plan to contribute to the development or make changes to the source code, install `QCircuitHEOM` in editable mode by cloning its GitHub repository.
 
 Steps
 -----
@@ -55,13 +55,13 @@ Steps
 
    .. code-block:: bash
 
-      git clone https://github.com/dehe1011/TensorHEOM.git
+      git clone https://github.com/dehe1011/QCircuitHEOM.git
 
 2. **Navigate to the Cloned Repository**:
 
    .. code-block:: bash
 
-      cd TensorHEOM
+      cd QCircuitHEOM
 
 3. **Run the Activation Script**:
 
@@ -78,7 +78,7 @@ Platform-Specific Instructions for Activation
 
    .. code-block:: powershell
 
-      Set-Location -Path "C:\Users\<YourUsername>\TensorHEOM"
+      Set-Location -Path "C:\Users\<YourUsername>\QCircuitHEOM"
 
 2. Run the activation script:
 
@@ -93,7 +93,7 @@ Platform-Specific Instructions for Activation
 
    .. code-block:: bash
 
-      cd /Users/<YourUsername>/TensorHEOM
+      cd /Users/<YourUsername>/QCircuitHEOM
 
 2. Run the activation script:
 
@@ -108,7 +108,7 @@ Platform-Specific Instructions for Activation
 
    .. code-block:: bash
 
-      cd /home/<YourUsername>/TensorHEOM
+      cd /home/<YourUsername>/QCircuitHEOM
 
 2. Run the activation script:
 
@@ -124,6 +124,6 @@ To remove the package:
 
 .. code-block:: bash
 
-   pip uninstall TensorHEOM
+   pip uninstall QCircuitHEOM
 
-If you cloned the GitHub repository, manually delete the `TensorHEOM` folder from your computer.
+If you cloned the GitHub repository, manually delete the `QCircuitHEOM` folder from your computer.
