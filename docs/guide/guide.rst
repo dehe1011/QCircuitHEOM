@@ -112,8 +112,7 @@ Several parameters dominate simulation accuracy and runtime. Among them are:
 
 ``bondDim``
     Maximum MPS bond dimension.  Larger values capture stronger quantum
-    correlations.  For a single qubit ``5``–``20`` is typical; two-qubit
-    simulations may need ``20``–``100``.
+    correlations.  For a single qubit and two qubits, ``5``–``20`` is typical.
 
 Redfield+ approximation
 =======================

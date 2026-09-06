@@ -32,6 +32,8 @@ between each repetition:
        qc.rx(np.pi, 0)
        qc.delay(idling_manual, 0)
 
+Here, two Rx(π) pulses are used to prevent Rx(2π) from being transpiled to Rx(0).
+
 Running locally
 ---------------
 
@@ -143,6 +145,7 @@ Compute the gate fidelity with respect to the ideal (noiseless) output state:
    kwargs = getKwargs("results/sim_Id", "Id_s1")
    t_list, rdo_list = getResult("results/sim_Id", "Id_s1")
 
+   ###### Can we use the plotFidelity subroutine mentioned in the paper here? ######
    # Ideal target: apply the circuit unitarily to the initial state
    U = Operator(kwargs["qc"]).data
    target = U @ kwargs["rhoIni"] @ U.conj().T

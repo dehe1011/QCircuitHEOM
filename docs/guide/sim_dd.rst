@@ -28,7 +28,7 @@ is an integer number of ``dt`` time units equal to ``dtFB`` ps.
    import numpy as np
    from qiskit import QuantumCircuit
 
-   dtFB = 0.002 / (10 * np.pi * 1e-3)   # ps  (chosen to match internal units)
+   dtFB = 0.1   # ps
    idle = int(10 / (1e-3 * dtFB))         # 10 ns expressed in dt units
 
    # XY4: X – idle – Y – idle, repeated twice

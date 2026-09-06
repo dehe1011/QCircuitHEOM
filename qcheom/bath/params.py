@@ -27,6 +27,7 @@ def getBathParams(bathParams):
     logarithmic frequency grid, constructs a rational approximation using
     the AAA algorithm, and converts the resulting poles and residues into
     the :math:`(z_k, d_k)` representation required by FP-HEOM.
+    The AAA algorithm is implemented using the :code:`baryrat` package :cite:`HofreitherNUMERALGOR2021`.
 
     Currently, the bath spectral function is constructed for the
     ``"broadband"`` bath type via :func:`broadbandNoise`.
