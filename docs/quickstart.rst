@@ -67,8 +67,9 @@ Use :func:`ttheom.getResult` to load the CSV back into Python:
    from ttheom import getResult
 
    t_list, rdo_list = getResult("results", "result_1q")
+   # What is "results" and "result_1q"?
    # t_list  : 1-D array of time points in units of the largest qubit frequency
-   # rdo_list: list of 2×2 density matrices
+   # rdo_list: list of 2×2 density matrices <- NxN?
 
 Analysing results
 =================
@@ -148,6 +149,7 @@ Bath
 
 ``T``
     Temperature in mK.  Scalar or list (one per qubit).
+    The temperature should be identical with each bath.
 
 ``T1``
     Energy-relaxation time in µs.  Scalar or list.
