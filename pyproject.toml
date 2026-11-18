@@ -2,11 +2,20 @@
 name = "qcheom"
 description = "A Python package for simulating quantum circuits in non-Markovian environments using free-pole hierarchical equations of motion (FP-HEOM) and tensor-train (TT) compression."
 readme = { file = "README.md", content-type = "text/markdown" }
-requires-python = ">=3.8"
-license = "BSD-3-Clause"
+requires-python = ">=3.11"
+license = "GPL-3.0-only"
+license-files = ["LICENSE.txt"]
+keywords = ["HEOM", "open quantum systems", "non-Markovian", "quantum circuits", "tensor train"]
 classifiers = [
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Physics",
 ]
 
 authors = [
@@ -15,8 +24,15 @@ authors = [
 ]
 dynamic = ["version", "dependencies", "optional-dependencies"]
 
-[tool.setuptools]
-packages = ["qcheom", "qcheom.gui"]
+[tool.setuptools.packages.find]
+include = ["qcheom*"]
+
+[tool.setuptools.package-data]
+qcheom = ["*.mplstyle"]
+"qcheom.gui" = ["logo.png"]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["*.ipynb", ".ipynb_checkpoints/*"]
 
 [tool.setuptools.dynamic]
 version = {attr = "qcheom.__version__"}
@@ -27,10 +43,13 @@ dev = { file = "requirements/dev-requirements.txt" }
 docs = { file = "requirements/doc-requirements.txt" }
 
 [project.urls]
-repository = "https://github.com/dehe1011/QCircuitHEOM"
+Homepage = "https://github.com/dehe1011/QCircuitHEOM"
+Documentation = "https://qcircuitheom.readthedocs.io"
+Repository = "https://github.com/dehe1011/QCircuitHEOM"
+Issues = "https://github.com/dehe1011/QCircuitHEOM/issues"
 
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=77.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.black]
