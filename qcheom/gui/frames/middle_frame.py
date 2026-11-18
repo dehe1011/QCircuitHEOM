@@ -74,7 +74,7 @@ class MiddleFrame(ctk.CTkScrollableFrame):
         row += 1
 
         self.tol_entry = make_labeled_entry(
-            self, "AAA tolerance:", row, default="1e-4"
+            self, "AAA tolerance:", row, default="1e-6"
         )
         row += 1
 
@@ -102,7 +102,7 @@ class MiddleFrame(ctk.CTkScrollableFrame):
         row += 1
 
         self.dtFB_entry = make_labeled_entry(
-            self, "Time step (ps):", row, default="3"
+            self, "Time step (ps):", row, default="0.1"
         )
         row += 1
 
