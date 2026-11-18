@@ -5,7 +5,7 @@
 QCircuitHEOM Documentation
 ==========================
 
-**Version:** |release| | **License:** BSD 3-Clause | `GitHub <https://github.com/dehe1011/QCircuitHEOM>`_
+**Version:** |release| | **License:** GPL-3.0 | `GitHub <https://github.com/dehe1011/QCircuitHEOM>`_
 
 QCircuitHEOM is a Python package for simulating quantum circuits in **non-Markovian environments**
 using free-pole hierarchical equations of motion (FP-HEOM) combined with tensor-train (TT) compression.
