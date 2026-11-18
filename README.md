@@ -6,8 +6,8 @@
     <a href="https://qcircuitheom.readthedocs.io/en/latest/">
         <img src="https://readthedocs.org/projects/qcircuitheom/badge/?version=latest"
             alt="Documentation Status" /></a>
-    <a href="https://opensource.org/licenses/BSD-3-Clause">
-        <img src="https://img.shields.io/badge/license-New%20BSD-blue.svg"
+    <a href="https://www.gnu.org/licenses/gpl-3.0">
+        <img src="https://img.shields.io/badge/license-GPLv3-blue.svg"
             alt="License"></a>
     <a href='https://github.com/dehe1011/QuantumDNA/actions/workflows/code-quality.yml'>
         <img src='https://img.shields.io/github/actions/workflow/status/dehe1011/QuantumDNA/code-quality.yml?branch=main'
@@ -134,7 +134,7 @@ Recent papers from our group:
 
 ## License
 
-QCircuitHEOM is distributed under the BSD 3-Clause License.
+QCircuitHEOM is distributed under the GNU General Public License v3.0 (GPL-3.0). See [LICENSE.txt](LICENSE.txt) for details.
 
 ## Support
 
